@@ -9,8 +9,8 @@ public class Main
     }
     public static void main(String[] args)
     {
-        //helloProcessing();
-        System.out.println("Hello World.");
+        helloProcessing();
+       /* System.out.println("Hello World.");
         Animal misty = new Animal("Misty");
         Animal lucy = new Animal("Lucy");
 
@@ -25,5 +25,6 @@ public class Main
         {
             ginger.killMe();
         }
+        */
     }
 }
