@@ -2,6 +2,7 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
+
 public class HelloProcessing extends PApplet
 {
 
@@ -11,57 +12,52 @@ public class HelloProcessing extends PApplet
 	}
 
 	public void setup() {
-		colorMode(HSB);
+		colorMode(RGB);
 		background(0);
 
-		x1 = random(0, width);
-		x2 = random(0, width);
-		y1 = random(0, height);
-		y2 = random(0, height);
-
-		float range = 5;
-
-		x1dir = random(-range, range);
-		x2dir = random(-range, range);
-		y1dir = random(-range, range);
-		y2dir = random(-range, range);
-
-		smooth();
-		
 	}
 
-	float x1, y1, x2, y2;
-	float x1dir, x2dir, y1dir, y2dir;
-	float c = 0;
-	
 	public void draw()
 	{	
-		strokeWeight(2);
-		stroke(c, 255, 255);
-		c = (c + 1f) % 255;
-		line(x1, y1, x2, y2);
+		/*
+		stroke(255);
+		background(250, 250, 0); // single param is grey scale from 0 to 255 i.e. 1 byte of data ala 8 bits
+		line(10, 10, 200, 200); // x1, y1, x2, y2
+		circle(200, 250, 50); // cx, cy, r
+		ellipse(50, 200, 90, 200); // cx, cy, w, h
 
-		x1 += x1dir;
-		x2 += x2dir;
-		y1 += y1dir;
-		y2 += y2dir;
-		
-		if (x1 < 0 || x1 > width)
-		{
-			x1dir = - x1dir;
-		}
-		if (y1 < 0 || y1 > height)
-		{
-			y1dir = - y1dir;
-		}
+		fill(0,0,255);
+		//noFill();
+		//noStroke();
 
-		if (x2 < 0 || x2 > width)
-		{
-			x2dir = - x2dir;
-		}
-		if (y2 < 0 || y2 > height)
-		{
-			y2dir = - y2dir;
-		}
+		rectMode(CENTER);
+		rect(300, 20, 100, 20); // tlx, tly, w , h
+
+		rectMode(CORNER);
+		rect(300, 20, 100, 20); // tlx, tly, w , h
+
+		point(20, 300); // single pixel coordinates
+
+		triangle(10, 400, 50, 450, 300, 200); // x1, y1, x2, y2, x3, y3
+		*/
+		stroke(255);
+		background(255, 0, 0);
+
+		fill(255, 255, 0);
+		noStroke();
+		circle(250, 250, 400);
+
+		fill(129, 252, 230);
+		noStroke();
+		triangle(250, 10, 460, 400, 20, 400);
+
+		fill(250);
+		noStroke();
+		ellipse(245, 200, 205, 100);
+
+		fill(0);
+		noStroke();
+		circle(245, 200, 50);
+
 	}
 }
