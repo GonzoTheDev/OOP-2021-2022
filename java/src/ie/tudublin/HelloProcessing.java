@@ -14,9 +14,9 @@ public class HelloProcessing extends PApplet
 		colorMode(HSB);
 		background(0);
 
-		x1 = random(0, width);
+		x1 = random(5, width);
 		x2 = random(0, width);
-		y1 = random(0, height);
+		y1 = random(5, height);
 		y2 = random(0, height);
 
 		float range = 5;
@@ -36,7 +36,7 @@ public class HelloProcessing extends PApplet
 	
 	public void draw()
 	{	
-		strokeWeight(2);
+		strokeWeight(10);
 		stroke(c, 255, 255);
 		c = (c + 1f) % 255;
 		line(x1, y1, x2, y2);
