@@ -68,7 +68,24 @@ public class BugZap extends PApplet
 		{
 			playerX+=playerSpeed;
 		}
+
+		if (key == ' ')
+		{	
+			float halfW = bugWidth / 2;
+			if(playerX > bugX - halfW && playerX < bugX + halfW)
+			{
+				score++;
+				resetBug();
+				line(playerX, playerY - 10, playerX, bugY);
+			}
+			else
+			{
+				line(playerX, playerY - 10, playerX, 0);
+			}
+		}
 	}
+
+	int score = 0;
 
 	void moveBug()
 	{
@@ -86,5 +103,6 @@ public class BugZap extends PApplet
 		{
 			moveBug();
 		}
+		text("Score: " + score, 50, 50);
 	}
 }
