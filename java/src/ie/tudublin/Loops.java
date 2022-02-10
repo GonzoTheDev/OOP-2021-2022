@@ -27,14 +27,19 @@ public class Loops extends PApplet
 		println(mode);
 	}
 
+	public void magicMap(float i, float a, float b, float c, float d) 
+	{
+		float div = (d - c) / (b - a);
+		for(i = a; i < b; i++)
+		{
+			
+		}
+		
+	}
+
 	
 	public void draw()
 	{
-		
-
-		
-
-
 		switch(mode)	
 		{
 			case 0:
