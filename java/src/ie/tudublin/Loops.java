@@ -30,7 +30,7 @@ public class Loops extends PApplet
 	
 	public void draw()
 	{
-		background(0);
+		
 
 		
 
@@ -38,25 +38,18 @@ public class Loops extends PApplet
 		switch(mode)	
 		{
 			case 0:
-				int max = 0;
-				int rec1 = 0;
-				int rec2 = 50;
-		
-				for(int i = 0; i < 10;  i++)
+				background(0);
+				int bars = 10;
+				float w = width / (float) bars;
+				float colorGap = 255 / (float) bars;
+
+				for(int i = 0; i < bars;  i++)
 				{
-					
-					if(i > 0)
-					{
-						max = max + 20;
-						rec1 = rec1 + 50;
-						rec2 = rec2 + 50;
-					}
 					noStroke();
-					fill(max, 300, 300);
-					rect(rec1, 0, rec2, 500);
-		
-					
+					fill(colorGap * i, 255, 255);
+					rect(i * w, 0, w, height);	
 				}
+
 				break;
 			case 1:
 				int color = 0;
