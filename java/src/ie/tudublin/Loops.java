@@ -73,7 +73,27 @@ public class Loops extends PApplet
 				// b - c - start and end of the first range
 				// d, e 0 - start and and of the end range
 
+<<<<<<< Updated upstream
 				// map(-2, 10, 90, 200, 233);
+=======
+				}
+				break;
+			case 2:
+				background(0);
+				int circles = (int) (mouseX / 20.0f);
+				float radius = width / (float)circles;	
+				
+				for(int i = 0; i < circles; i++)
+				{
+					noStroke();
+					fill(map(i, 0, circles, 0, 255), 255, 255);
+					float x = map(i, 0, circles, 0, width);
+					circle(x, i, radius);
+
+				}
+				break;
+				
+>>>>>>> Stashed changes
 
 		}
 	}
