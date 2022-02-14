@@ -30,13 +30,20 @@ public class Loops extends PApplet
 	
 	public void draw()
 	{
-		
+		float newMap = map(-2, 10,90,200,233);
+		System.out.println(newMap);
 		switch(mode)	
 		{
 			case 0:
 				break;
 			case 1:
+				
 				break;
+				//map(a,b,c,d,e);
+				//a = inputvalue
+				// b - c - start and end of the first range
+				// d - e - start and end of the second range
+
 		}
 	}
 }
