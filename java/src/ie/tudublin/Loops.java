@@ -66,17 +66,7 @@ public class Loops extends PApplet
 				}
 				break;
 			case 1:
-			
-				break;
-				//map(a,b,c,d,e);
-				//a = inputvalue
-				// b - c - start and end of the first range
-				// d, e 0 - start and and of the end range
-
-<<<<<<< Updated upstream
-				// map(-2, 10, 90, 200, 233);
-=======
-				}
+				
 				break;
 			case 2:
 				background(0);
@@ -87,13 +77,12 @@ public class Loops extends PApplet
 				{
 					noStroke();
 					fill(map(i, 0, circles, 0, 255), 255, 255);
-					float x = map(i, 0, circles, 0, width);
-					circle(x, i, radius);
+					//float x = map(i, 0, circles, 0, width);
+					circle(map(i, 0, circles - 1, radius / 2.0f, width - (radius / 2.0f)), height / 2, radius);
 
 				}
 				break;
 				
->>>>>>> Stashed changes
 
 		}
 	}
