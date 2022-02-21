@@ -50,13 +50,13 @@ public class Arrays extends PApplet {
         // Iterate over the array
         for(int i = 1; i < rainfall.length; i++)
         {
-            // If min is greater than the current iteration array value set min the the array value
+            // If min is greater than the current iteration array value set min to the array value
             if(min > rainfall[i])
             {
                 min = rainfall[i];
             }
 
-            // If max is less than the current iteration array value set max the the array value
+            // If max is less than the current iteration array value set max to the array value
             if(max < rainfall[i])
             {
                 max = rainfall[i];
@@ -65,7 +65,7 @@ public class Arrays extends PApplet {
 
         // Print the results
         println("The max is: " + max + "\n");
-        println("The max is: " + min + "\n");
+        println("The min is: " + min + "\n");
 
     }
 
