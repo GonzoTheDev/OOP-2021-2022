@@ -23,15 +23,24 @@ public class Arrays extends PApplet {
 
     public void setup()
     {
+
+        // Forward iteration
         for(int i = 0; i < rainfall.length; i++)
         {
             println(rainfall[i] + "\t" + months[i]);
         }
 
         // Enhanced for loop equivelant to foreach
+        // Limited in that you can't get the index of each element of the array
         for(float r:rainfall)
         {
             println(r);
+        }
+
+        // Backwords iteration
+        for(int i = rainfall.length-1; i >= 0; i--)
+        {
+            println(rainfall[i] + "\t" + months[i]);
         }
     }
 
