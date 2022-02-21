@@ -42,6 +42,31 @@ public class Arrays extends PApplet {
         {
             println(rainfall[i] + "\t" + months[i]);
         }
+
+        // Initialize max and min values as first element in array
+        float max = rainfall[0];
+        float min = rainfall[0];
+
+        // Iterate over the array
+        for(int i = 1; i < rainfall.length; i++)
+        {
+            // If min is greater than the current iteration array value set min the the array value
+            if(min > rainfall[i])
+            {
+                min = rainfall[i];
+            }
+
+            // If max is less than the current iteration array value set max the the array value
+            if(max < rainfall[i])
+            {
+                max = rainfall[i];
+            }
+        }
+
+        // Print the results
+        println("The max is: " + max + "\n");
+        println("The max is: " + min + "\n");
+
     }
 
     public void draw()
