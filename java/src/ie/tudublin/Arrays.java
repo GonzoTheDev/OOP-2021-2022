@@ -132,9 +132,45 @@ public class Arrays extends PApplet {
                 stroke(255);
                 noFill();
                 circle(cx, cy, r * 2.0f);
-                arc()
+                //arc();
 
                 break;
-            }        
-    }    
+            case 3:
+            {
+                background(0);
+                float border = width * 0.1f;
+                // Draw the axis
+                stroke(255);
+                line(border, border, border, height - border);
+                line(border, height - border, width - border, height - border);
+                for(int i = 0 ; i <= 120; i += 10)
+                {
+                    float y = map(i, 0, 120, height - border, border);
+                    line(border - 5, y, border, y);
+                    fill(255);
+                    textAlign(CENTER, CENTER);
+                    text(i, border / 2, y);
+                }
+                float w = (width - (border * 2.0f)) / (float)rainfall.length;
+                
+                for(int i = 1 ; i < rainfall.length; i ++)
+                {
+                    float x1 = map(i-1, 0, rainfall.length, border, width-border);
+                    float y1 = map(i-1, 0, rainfall[i-1], height - border, border);
+                    float x2 = map(i, 0, rainfall.length, border, width-border);
+                    float y2 = map(i, 0, rainfall[i], height - border, border);
+                    stroke(255);
+                    fill(255);
+                    line(x1, y1, x2, y2);
+                }
+                for(int i = 0; i < rainfall.length; i++)
+                {
+                    float x = map(i, 0, rainfall.length, border, width-border);
+                    fill(255);
+                    text(months[i], x + (w / 2), height - (border / 2));
+                }
+                break;
+            }      
+        }
+    } 
 }
