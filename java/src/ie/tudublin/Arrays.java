@@ -23,11 +23,16 @@ public class Arrays extends PApplet {
 
     public void setup()
     {
+        
+        float totalRainfall = 0;
+        float averageRainfall = 0;
 
         // Forward iteration
         for(int i = 0; i < rainfall.length; i++)
         {
             println(rainfall[i] + "\t" + months[i]);
+
+            totalRainfall += rainfall[i];
         }
 
         // Enhanced for loop equivelant to foreach
@@ -66,11 +71,29 @@ public class Arrays extends PApplet {
         // Print the results
         println("The max is: " + max + "\n");
         println("The min is: " + min + "\n");
+        println("The total rainfall is: " + totalRainfall + "\n");
+
+        
+        averageRainfall = totalRainfall / rainfall.length;
+        println("The average rainfall in any given month is: " + averageRainfall + "\n");
 
     }
 
     public void draw()
     {
-
+        colorMode(HSB);
+        background(0);
+        noStroke();
+        float w = width / (float) rainfall.length;
+        for(int i = 0; i < rainfall.length; i++)
+        {
+            fill(i*20, 255, 255);
+            float x = i *w;
+            rect(x, height, w, -rainfall[i]*3);
+            fill(255);
+            textAlign(CENTER, CENTER);
+            text(months[i], x + (w /2), height-50);
+        }
+        
     }
 }
