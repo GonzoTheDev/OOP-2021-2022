@@ -154,15 +154,12 @@ public class Arrays extends PApplet {
                 float w = (width - (border * 2.0f)) / (float)rainfall.length;
                 
                 for(int i = 1 ; i < rainfall.length; i ++)
-                {
-                    float x1 = map(i-1, 0, rainfall.length, border, width-border);
-                    float y1 = map(i-1, 0, rainfall[i-1], height - border, border);
-                    float x2 = map(i, 0, rainfall.length, border, width-border);
-                    float y2 = map(i, 0, rainfall[i], height - border, border);
-                    stroke(255);
-                    fill(255);
-                    line(x1, y1, x2, y2);
-                }
+            {
+                float x = map(i, 0, rainfall.length, border, width-border);
+                float h = map(rainfall[i], 0, 120, border, height-border );
+                float y = map(rainfall[i-1], 0, 120, border, height-border );
+                line(x + (w/2), height-h, x- (w/2), height-y);
+            }
                 for(int i = 0; i < rainfall.length; i++)
                 {
                     float x = map(i, 0, rainfall.length, border, width-border);
