@@ -99,6 +99,7 @@ public class Loops extends PApplet {
 					text(i, border * 0.5f, x);
 				}
 			case 4:
+			{
 				background(0);
 				stroke(255, 255, 255);	
 				float cx = width / 2;
@@ -128,7 +129,65 @@ public class Loops extends PApplet {
 				// d, e 0 - start and and of the end range
 
 				// map(-2, 10, 90, 200, 233);
+			}
+			break;
+			case 5:
+			{
+				background(0);
+				stroke(255);
 
+				int sides = 360;
+
+				for(int i = 0; i < sides; i++)
+				{
+					int x1 = 250;  int y1 = 100;
+					int x2 = 100;  int y2 = 350;
+					int x3 = 400;  int y3 = 350;
+
+					noFill();
+
+					//main triangle
+					triangle(x1, y1, x2, y2, x3, y3);
+
+					//beam of light
+					line(0, 250, 190, 200);
+
+					fill(255);
+
+					//light inside prism
+					triangle(190, 200, 297, 180, 320, 220);
+
+					noStroke();
+					
+					//light exiting prism 
+					//
+
+					//red
+					fill(0, 255, 255);
+					quad((float)297.00, (float) 180.00, (float)303.67, (float) 186.67, (float)500, (float) 209.0, (float) 500.00, (float)200.0);
+					
+					//orange
+					fill(25, 255, 255);
+					quad((float)303.67, (float) 186.67, (float)307.3367, (float) 193.34, (float)500, (float) 218.0, (float) 500.00, (float)209.0);
+
+					//yellow
+					fill(40, 255, 255);
+					quad((float)307.3367, (float) 193.34, (float)312.0034, (float) 200.01, (float)500, (float) 227.0, (float) 500.00, (float)218.0);
+
+					//green
+					fill(60, 255, 255);
+					quad((float)310.3367, (float) 200.01, (float)317.0034, (float) 206.68, (float)500, (float) 236.0, (float) 500.00, (float)227.0);
+
+					//blue
+					fill(140, 255, 255);
+					quad((float)313.3367, (float) 206.68, (float)322.0034, (float) 213.35, (float)500, (float) 245.0, (float) 500.00, (float)236.0);
+
+					//purple
+					fill(195, 255, 255);
+					quad((float)316.3367, (float) 213.35, (float)327.0034, (float) 220.02, (float)500, (float) 254.0, (float) 500.00, (float)245.0);
+				}
+			}
+			break;
 		}
 	}
 }
