@@ -46,7 +46,7 @@ public class Audio1 extends PApplet
         // Uncomment this to use the microphone
         // ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
         // ab = ai.mix; 
-        ap = minim.loadFile("heroplanet.mp3", 1024);
+        ap = minim.loadFile("powerlines.wav", 1024);
         ap.play();
         ab = ap.mix;
         colorMode(HSB);
@@ -71,7 +71,7 @@ public class Audio1 extends PApplet
         for(int i = 0 ; i < ab.size() ; i ++)
         {
             sum += abs(ab.get(i));
-            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.01f);
         }
         average= sum / (float) ab.size();
 
@@ -92,15 +92,18 @@ public class Audio1 extends PApplet
         case 1:
                 {
                     strokeWeight(2);
-                    for(int i = 0 ; i < ab.size() ; i += 10)
+                    for(int i = 0 ; i < ab.size() ; i += 5)
                     {
                         //float c = map(ab.get(i), -1, 1, 0, 255);
                         float c = map(i + off, 0, ab.size(), 0, 255) % 255;
                         stroke(c, 255, 255);
-                        float f = lerpedBuffer[i] * halfH * 6.0f;
+                        float f = lerpedBuffer[i] * halfH * 3.0f;
                         fill(c, 255, 255);
-                        circle(i, halfH + f, 5);
-                        circle(i, halfH - f, 5);                        
+
+                        // circles
+                        circle(i, halfH + f, 15);
+                        circle(i, halfH - f, 5);   
+                        // vertical lines                     
                         line(i, halfH + f, i, halfH - f);                    
                     }
                 }
@@ -125,6 +128,31 @@ public class Audio1 extends PApplet
                         float y = cy - cos(theta) * r;
                         
                         //circle(x, y, 20);
+                        line(px, py, x, y);
+                        px = x;
+                        py = y;
+                    }
+            }
+            case 3:
+            {
+                    background(0, 0, 0, 100);
+                    stroke(50, 255, 255);	
+                    float cx = width / 2;
+                    float cy = height / 2;	
+                    float radius = map(smoothedAmplitude, 0, 0.1f, 50, 500);		
+                    int points = (int)map(mouseX, 0, 255, 3, 50);
+                    int sides = points * 2;
+                    float px = cx;
+                    float py = cy - radius; 
+                    for(int i = 0 ; i <= sides ; i ++)
+                    {
+                        float r = (i % 2 == 0) ? radius : radius / 2; 
+                        // float r = radius;
+                        float theta = map(i, 0, sides, 0, TWO_PI);
+                        float x = cx + sin(theta) * r;
+                        float y = cy - cos(theta) * r;
+                        
+                        circle(x, y, 20);
                         line(px, py, x, y);
                         px = x;
                         py = y;
