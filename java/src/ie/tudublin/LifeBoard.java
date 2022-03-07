@@ -3,14 +3,30 @@ package ie.tudublin;
 import processing.core.PApplet;
 
 public class LifeBoard {
-    boolean[][] board;
+    boolean[][] board, next;
     int size;
     float cellSize;
     PApplet pa;
+    int colour = 0;
+
+    public static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    
 
     public LifeBoard(int size, PApplet pa)
     {
         board = new boolean[size][size];
+        next = new boolean[size][size];
         this.size = size;
         this.pa = pa;
         cellSize = pa.width / (float) size;
@@ -27,52 +43,58 @@ public class LifeBoard {
         }
     }
 
+    public void update()
+    {
+        // If cell is alive
+        // and has 2 or 3 live neighbors, stays alive else kill it
+
+        // If cell is dead and has 3 neighbors, cell comes to life
+
+        for(int row = 0 ; row < size ; row ++)
+        {
+            for(int col = 0 ; col < size ; col ++)
+            {
+                int count = countCellsAround(row, col);
+
+
+                if(isAlive(row, col))
+                {
+                    if(count == 2 || count == 3)
+                    {
+                        next[row][col] = true;
+                    }
+                    else
+                    {
+                        next[row][col] = false;
+                    }
+                }
+                else
+                {
+                    if(count == 0)
+                    {
+                        next[row][col] = true;
+                    }
+                    else
+                    {
+                        next[row][col] = false;
+                    }
+                }
+            }
+        }
+
+        boolean[][] temp;
+
+        temp = board;
+        board = next;
+        next = temp;
+
+        //wait(200);
+        
+    }
+
     public int countCellsAround(int row, int col)
     {
         int count = 0;
-
-        /* My Solution Not Correct */
-        /*
-        if(board[row-1][col])
-        {
-            if(isAlive(row-1, col))
-                count++;
-        }
-        if(board[row-1][col-1])
-        {
-            if(isAlive(row-1, col-1))
-                count++;
-        }
-        if(board[row-1][col+1])
-        {
-            if(isAlive(row-1, col+1))
-                count++;
-        }
-        if(board[row+1][col-1])
-        {
-            if(isAlive(row+1, col-1))
-                count++;
-        }
-        if(board[row+1][col])
-        {
-            if(isAlive(row+1, col))
-                count++;
-        }
-        if(board[row+1][col+1])
-        {
-            if(isAlive(row+1, col+1))
-                count++;
-        }
-        if(board[row][col-1])
-        {
-            if(isAlive(row, col-1))
-                count++;
-        }
-        if(board[row-1][col])
-        {
-            if(isAlive(row-1, col))
-                count++;
-        }*/
 
         
         for(int i = row -1; i <= row + 1; i++)
@@ -107,6 +129,8 @@ public class LifeBoard {
         }
     }
 
+    
+
     public void render()
     {
         pa.background(0);
@@ -120,10 +144,37 @@ public class LifeBoard {
 
                 // y = cellSize * row;
                 float y = PApplet.map(row, 0, size, 0, pa.height);
+
+                int count = countCellsAround(row, col);
+
+                if(count == 0)
+                {
+                    colour = 0;
+                }
+                else if(count == 1)
+                {
+                    colour = 0;
+                }
+                else if(count == 2)
+                {
+                    colour = 0;
+                }
+                else if(count == 3)
+                {
+                    colour = 150;
+                }
+                else if(count == 4)
+                {
+                    colour = 150;
+                }
+                else
+                {
+                    colour = 100;
+                }
                 
                 if (board[row][col])
                 {
-                    pa.fill(0, 255, 0);
+                    pa.fill(colour, 255, 255);
                 }else{
                     
                     pa.noFill();

@@ -8,19 +8,21 @@ public class Life extends PApplet {
 
 
 	public void settings() {
-		size(500, 500);
-		board = new LifeBoard(20, this);
+		size(900, 900);
+		//fullScreen(P3D, SPAN);
+		board = new LifeBoard(500, this);
 		board.randomise();
 		println(board.countCellsAround(1, 1));
 	}
 
 	public void setup() {
-		colorMode(RGB);
+		colorMode(HSB);
 
 	}
 
 	
 	public void draw() {
 		board.render();
+		board.update();
 	}
 }
