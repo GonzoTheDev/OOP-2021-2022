@@ -10,7 +10,7 @@ public class Life extends PApplet {
 	public void settings() {
 		size(900, 900);
 		//fullScreen(P3D, SPAN);
-		board = new LifeBoard(500, this);
+		board = new LifeBoard(300, this);
 		board.randomise();
 		println(board.countCellsAround(1, 1));
 	}
