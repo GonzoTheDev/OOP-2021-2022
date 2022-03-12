@@ -7,7 +7,7 @@ public class Loops extends PApplet {
 	int mode = 0;
 
 	public void settings() {
-		size(500, 500);
+		size(500, 500, P2D);
 	}
 
 	public void setup() {
@@ -86,7 +86,7 @@ public class Loops extends PApplet {
 				break;
 			case 3:
 				background(0);
-				colorMode(RGB);
+				colorMode(HSB);
 				float border = width * 0.1f;
 				for(int i = -5; i <= 5; i ++)
 				{
@@ -152,7 +152,7 @@ public class Loops extends PApplet {
 					//beam of light
 					line(0, 250, 190, 200);
 
-					fill(255);
+					fill(255, 0, map(i, 0, 255, 0, sides));
 
 					//light inside prism
 					triangle(190, 200, 297, 180, 320, 220);
